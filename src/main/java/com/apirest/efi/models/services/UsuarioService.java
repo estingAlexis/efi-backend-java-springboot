@@ -57,4 +57,5 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
   public Usuarios findByUsername(String username) {
     return usuarioDao.findByUsername(username);
   }
+
 }

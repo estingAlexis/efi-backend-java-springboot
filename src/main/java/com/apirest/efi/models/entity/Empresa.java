@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
@@ -24,10 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-/**
- *
- * @author Ricardo
- */
 @Entity
 @Table(name = "empresa")
 @XmlRootElement
@@ -113,7 +104,7 @@ public class Empresa implements Serializable {
     @NotNull
     @Column(name = "fk_entidad")
     private long fkEntidad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
+/*     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<Encuestas> encuestasList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<ResultadoEncuesta> resultadoEncuestaList;
@@ -122,8 +113,8 @@ public class Empresa implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "empresa1")
     private Empresa empresa;
     @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Empresa empresa1;
+    @OneToOne(optional = false) */
+    //private Empresa empresa1;*/
 
     public Empresa() {
     }
@@ -258,7 +249,7 @@ public class Empresa implements Serializable {
         this.fkEntidad = fkEntidad;
     }
 
-    @XmlTransient
+/*     @XmlTransient
     @JsonIgnore
     public List<Encuestas> getEncuestasList() {
         return encuestasList;
@@ -303,6 +294,7 @@ public class Empresa implements Serializable {
     public void setEmpresa1(Empresa empresa1) {
         this.empresa1 = empresa1;
     }
+    */
 
     @Override
     public int hashCode() {
