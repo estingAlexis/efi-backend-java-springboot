@@ -52,7 +52,7 @@ public class Usuarios implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 60)
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
@@ -190,7 +190,7 @@ public class Usuarios implements Serializable {
 
     @Override
     public String toString() {
-        return "com.apirest.financiero.models.entity.Usuarios[ id=" + id + " ]";
+        return "com.apirest.efi.models.entity.Usuarios[ id=" + id + " ]";
     }
     
 }

@@ -139,6 +139,19 @@
     <class>com.apirest.financiero.models.entity.RCarteraC</class>
     <class>com.apirest.financiero.models.entity.POrdenPagoEnc</class>
     <class>com.apirest.financiero.models.entity.RCarteraD</class>
+    <class>com.apirest.efi.models.entity.Municipio</class>
+    <class>com.apirest.efi.models.entity.GruposPregunta</class>
+    <class>com.apirest.efi.models.entity.Calendario</class>
+    <class>com.apirest.efi.models.entity.ResultadoEncuestaDetalle</class>
+    <class>com.apirest.efi.models.entity.CategoriasPregunta</class>
+    <class>com.apirest.efi.models.entity.Empresa</class>
+    <class>com.apirest.efi.models.entity.Preguntas</class>
+    <class>com.apirest.efi.models.entity.Encuestas</class>
+    <class>com.apirest.efi.models.entity.UsuariosRoles</class>
+    <class>com.apirest.efi.models.entity.Entidades</class>
+    <class>com.apirest.efi.models.entity.EncuestaDetalle</class>
+    <class>com.apirest.efi.models.entity.Categorias</class>
+    <class>com.apirest.efi.models.entity.ResultadoEncuesta</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://salud.cflyqudqcoq8.us-east-2.rds.amazonaws.com:1433;databaseName=USCN_CONTABLE_2017"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>

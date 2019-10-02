@@ -11,7 +11,7 @@
     <groupId>com.financiero</groupId>
     <artifactId>financiero</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>financiero</name>
+    <name>efi</name>
     <description>software contable</description>
 
     <properties>
