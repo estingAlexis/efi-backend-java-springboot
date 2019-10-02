@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    password: Admin123
+    url: jdbc:sqlserver://salud.cflyqudqcoq8.us-east-2.rds.amazonaws.com:1433;databaseName=efi_dev
+    username: sa
+    platform: mssql
+  jackson:
+    locale: es_CO
+    time-zone: America/Bogota
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+    openInView: false
+    show-sql: true
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+server:
+    port : 5000
