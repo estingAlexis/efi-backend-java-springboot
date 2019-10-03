@@ -16,7 +16,7 @@ public class MunicipioService {
         return municipioDao.findAll();
     }
 
-    public Municipio findById(Long id){
+    public Municipio findById(Integer id){
         return municipioDao.findById(id).orElse(null);
     }
 

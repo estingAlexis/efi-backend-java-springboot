@@ -16,7 +16,7 @@ public class CalendarioService {
         return calendarioDao.findAll();
     }
 
-    public Calendario findById(Long id){
+    public Calendario findById(Integer id){
         return calendarioDao.findById(id).orElse(null);
     }
 

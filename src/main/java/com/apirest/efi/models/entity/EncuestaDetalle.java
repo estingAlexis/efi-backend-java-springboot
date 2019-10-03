@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
@@ -18,10 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Ricardo
- */
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "encuesta_detalle")
 @XmlRootElement
@@ -41,9 +34,11 @@ public class EncuestaDetalle implements Serializable {
     @NotNull
     @Column(name = "requerido")
     private short requerido;
+    @JsonIgnore
     @JoinColumn(name = "id_encuesta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Encuestas idEncuesta;
+    @JsonIgnore
     @JoinColumn(name = "id_pregunta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Preguntas idPregunta;

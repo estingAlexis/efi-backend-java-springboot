@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
@@ -28,10 +23,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-/**
- *
- * @author Ricardo
- */
 @Entity
 @Table(name = "encuestas")
 @XmlRootElement
@@ -63,7 +54,7 @@ public class Encuestas implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
     private List<EncuestaDetalle> encuestaDetalleList;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -71,7 +62,7 @@ public class Encuestas implements Serializable {
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios idUsuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
     private List<ResultadoEncuesta> resultadoEncuestaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
     private List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList;
@@ -122,7 +113,7 @@ public class Encuestas implements Serializable {
         this.estado = estado;
     }
 
-    @XmlTransient
+/*     @XmlTransient
     @JsonIgnore
     public List<EncuestaDetalle> getEncuestaDetalleList() {
         return encuestaDetalleList;
@@ -166,7 +157,7 @@ public class Encuestas implements Serializable {
 
     public void setResultadoEncuestaDetalleList(List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList) {
         this.resultadoEncuestaDetalleList = resultadoEncuestaDetalleList;
-    }
+    } */
 
     @Override
     public int hashCode() {

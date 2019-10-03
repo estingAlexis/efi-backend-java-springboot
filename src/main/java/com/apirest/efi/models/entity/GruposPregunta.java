@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
@@ -22,10 +17,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-/**
- *
- * @author Ricardo
- */
 @Entity
 @Table(name = "grupos_pregunta")
 @XmlRootElement
@@ -46,8 +37,8 @@ public class GruposPregunta implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupo")
-    private List<Preguntas> preguntasList;
+/*     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupo")
+    private List<Preguntas> preguntasList; */
 
     public GruposPregunta() {
     }
@@ -76,7 +67,7 @@ public class GruposPregunta implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+/* 
     @XmlTransient
     @JsonIgnore
     public List<Preguntas> getPreguntasList() {
@@ -85,7 +76,7 @@ public class GruposPregunta implements Serializable {
 
     public void setPreguntasList(List<Preguntas> preguntasList) {
         this.preguntasList = preguntasList;
-    }
+    } */
 
     @Override
     public int hashCode() {

@@ -32,6 +32,19 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
   @Autowired
   private IUsuarioDao usuarioDao;
 
+  public List<Usuarios> findAll(){
+    return (List<Usuarios>) usuarioDao.findAll();
+  }
+
+  public Usuarios findById(Long id){
+    return usuarioDao.findById(id).orElse(null);
+  }
+
+  public Usuarios save(Usuarios user) {
+    return usuarioDao.save(user);
+  }
+
+
   @Override
   @Transactional(readOnly = true)
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
