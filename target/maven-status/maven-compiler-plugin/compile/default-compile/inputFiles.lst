@@ -3,6 +3,7 @@ C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\EntidadesController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\EncuestasController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\MunicipioController.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\ResultadoEncuestaDetalleController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\ResultadoEncuestaDetalleDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Encuestas.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Usuarios.java
@@ -36,6 +37,7 @@ C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\MunicipioDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\ResultadoEncuesta.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Entidades.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\UsuariosController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\EntidadesService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\PreguntasService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\EmpresaDao.java

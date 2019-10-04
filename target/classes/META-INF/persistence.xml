@@ -152,6 +152,10 @@
     <class>com.apirest.efi.models.entity.EncuestaDetalle</class>
     <class>com.apirest.efi.models.entity.Categorias</class>
     <class>com.apirest.efi.models.entity.ResultadoEncuesta</class>
+    <class>com.apirest.efi.models.entity.IndicadorVariables</class>
+    <class>com.apirest.efi.models.entity.IndicadorGrupo</class>
+    <class>com.apirest.efi.models.entity.IndicadorTipo</class>
+    <class>com.apirest.efi.models.entity.PlanCuentas</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://salud.cflyqudqcoq8.us-east-2.rds.amazonaws.com:1433;databaseName=USCN_CONTABLE_2017"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>
