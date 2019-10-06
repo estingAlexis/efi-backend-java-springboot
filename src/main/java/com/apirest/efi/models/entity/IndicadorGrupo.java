@@ -1,16 +1,24 @@
+
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 @Table(name = "indicador_grupo")
@@ -19,7 +27,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "IndicadorGrupo.findAll", query = "SELECT i FROM IndicadorGrupo i")
     , @NamedQuery(name = "IndicadorGrupo.findByIdGrupo", query = "SELECT i FROM IndicadorGrupo i WHERE i.idGrupo = :idGrupo")
     , @NamedQuery(name = "IndicadorGrupo.findByNombreGrupo", query = "SELECT i FROM IndicadorGrupo i WHERE i.nombreGrupo = :nombreGrupo")
-    , @NamedQuery(name = "IndicadorGrupo.findByFkTipo", query = "SELECT i FROM IndicadorGrupo i WHERE i.fkTipo = :fkTipo")
     , @NamedQuery(name = "IndicadorGrupo.findByFkEmpresa", query = "SELECT i FROM IndicadorGrupo i WHERE i.fkEmpresa = :fkEmpresa")
     , @NamedQuery(name = "IndicadorGrupo.findByEstado", query = "SELECT i FROM IndicadorGrupo i WHERE i.estado = :estado")})
 public class IndicadorGrupo implements Serializable {
@@ -37,10 +44,6 @@ public class IndicadorGrupo implements Serializable {
     private String nombreGrupo;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fk_tipo")
-    private int fkTipo;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "fk_empresa")
     private int fkEmpresa;
     @Basic(optional = false)
@@ -55,10 +58,9 @@ public class IndicadorGrupo implements Serializable {
         this.idGrupo = idGrupo;
     }
 
-    public IndicadorGrupo(Integer idGrupo, String nombreGrupo, int fkTipo, int fkEmpresa, int estado) {
+    public IndicadorGrupo(Integer idGrupo, String nombreGrupo, int fkEmpresa, int estado) {
         this.idGrupo = idGrupo;
         this.nombreGrupo = nombreGrupo;
-        this.fkTipo = fkTipo;
         this.fkEmpresa = fkEmpresa;
         this.estado = estado;
     }
@@ -77,14 +79,6 @@ public class IndicadorGrupo implements Serializable {
 
     public void setNombreGrupo(String nombreGrupo) {
         this.nombreGrupo = nombreGrupo;
-    }
-
-    public int getFkTipo() {
-        return fkTipo;
-    }
-
-    public void setFkTipo(int fkTipo) {
-        this.fkTipo = fkTipo;
     }
 
     public int getFkEmpresa() {

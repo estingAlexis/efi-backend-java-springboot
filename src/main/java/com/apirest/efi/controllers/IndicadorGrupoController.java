@@ -25,7 +25,7 @@ public class IndicadorGrupoController {
     private IndicadorGrupoService indicadorGrupoService;
 
     @GetMapping("indicadorGrupo")
-    public List<IndicadorGrupo> findAll() {
+    public List<Object> findAll() {
 		return indicadorGrupoService.findAll();
     }
     

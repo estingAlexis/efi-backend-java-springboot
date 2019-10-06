@@ -12,8 +12,8 @@ public class IndicadorGrupoService {
     @Autowired
     private IndicadorGrupoDao indicadorGrupoDao;
     
-    public List<IndicadorGrupo> findAll(){
-        return indicadorGrupoDao.findAll();
+    public List<Object> findAll(){
+        return indicadorGrupoDao.findWithNombreTipo();
     }
 
     public IndicadorGrupo findById(Integer id){

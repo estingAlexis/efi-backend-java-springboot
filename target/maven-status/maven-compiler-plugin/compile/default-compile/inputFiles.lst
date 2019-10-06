@@ -1,4 +1,9 @@
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\IndicadorVariables.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\ResultadoEncuestaDetalleService.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\IndicadorVariablesController.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\IndicadorVariablesService.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\PlanCuentas.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\IndicadorGrupo.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\MunicipioService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\EntidadesController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\EncuestasController.java
@@ -7,6 +12,7 @@ C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\ResultadoEncuestaDetalleDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Encuestas.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Usuarios.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\PlanCuentasService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\FinancieroApplication.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\IRoleDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\EncuestasService.java
@@ -14,8 +20,12 @@ C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\EncuestaDetalle.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\auth\JwtConfig.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\ResultadoEncuestaDao.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\IndicadorGrupoService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\CategoriasPreguntaController.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\IndicadorTipoDao.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\IndicadorGrupoController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\CategoriasPreguntaDao.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\PlanCuentasController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\EmpresaService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Calendario.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Categorias.java
@@ -33,6 +43,7 @@ C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\CategoriasDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\auth\SpringSecurityConfig.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\GruposPreguntaController.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\PlanCuentasDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\CalendarioController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\MunicipioDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\ResultadoEncuesta.java
@@ -42,15 +53,19 @@ C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\PreguntasService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\EmpresaDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\CalendarioDao.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\IndicadorVariablesDao.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\IndicadorTipoController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Preguntas.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\UsuariosRolesPK.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\PreguntasDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\EntidadesDao.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\IndicadorGrupoDao.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\EncuestaDetalleController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\EmpresaController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\ResultadoEncuestaDetalle.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\controllers\ResultadoEncuestaController.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\EncuestasDao.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\IndicadorTipo.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Roles.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\EncuestaDetalleService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\dao\EncuestaDetalleDao.java
@@ -58,6 +73,7 @@ C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\CategoriasPreguntaService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\Municipio.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\auth\ResourceServerConfig.java
+C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\IndicadorTipoService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\services\CalendarioService.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\models\entity\UsuariosRoles.java
 C:\Users\Ricardo\Documents\GitHub\efi-backend-java-springboot\src\main\java\com\apirest\efi\auth\AuthorizationServerConfig.java

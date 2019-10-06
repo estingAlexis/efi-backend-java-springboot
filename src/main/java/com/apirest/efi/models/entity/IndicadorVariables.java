@@ -1,3 +1,4 @@
+
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
@@ -5,6 +6,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,7 +22,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "IndicadorVariables.findAll", query = "SELECT i FROM IndicadorVariables i")
     , @NamedQuery(name = "IndicadorVariables.findByIdVariable", query = "SELECT i FROM IndicadorVariables i WHERE i.idVariable = :idVariable")
     , @NamedQuery(name = "IndicadorVariables.findByNombreVariable", query = "SELECT i FROM IndicadorVariables i WHERE i.nombreVariable = :nombreVariable")
-    , @NamedQuery(name = "IndicadorVariables.findByFkGrupo", query = "SELECT i FROM IndicadorVariables i WHERE i.fkGrupo = :fkGrupo")
     , @NamedQuery(name = "IndicadorVariables.findByFkEmpresa", query = "SELECT i FROM IndicadorVariables i WHERE i.fkEmpresa = :fkEmpresa")
     , @NamedQuery(name = "IndicadorVariables.findByEstado", query = "SELECT i FROM IndicadorVariables i WHERE i.estado = :estado")
     , @NamedQuery(name = "IndicadorVariables.findByCodigoFut", query = "SELECT i FROM IndicadorVariables i WHERE i.codigoFut = :codigoFut")})
@@ -38,10 +40,6 @@ public class IndicadorVariables implements Serializable {
     private String nombreVariable;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "fk_grupo")
-    private int fkGrupo;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "fk_empresa")
     private int fkEmpresa;
     @Basic(optional = false)
@@ -58,10 +56,9 @@ public class IndicadorVariables implements Serializable {
         this.idVariable = idVariable;
     }
 
-    public IndicadorVariables(Integer idVariable, String nombreVariable, int fkGrupo, int fkEmpresa, int estado) {
+    public IndicadorVariables(Integer idVariable, String nombreVariable, int fkEmpresa, int estado) {
         this.idVariable = idVariable;
         this.nombreVariable = nombreVariable;
-        this.fkGrupo = fkGrupo;
         this.fkEmpresa = fkEmpresa;
         this.estado = estado;
     }
@@ -80,14 +77,6 @@ public class IndicadorVariables implements Serializable {
 
     public void setNombreVariable(String nombreVariable) {
         this.nombreVariable = nombreVariable;
-    }
-
-    public int getFkGrupo() {
-        return fkGrupo;
-    }
-
-    public void setFkGrupo(int fkGrupo) {
-        this.fkGrupo = fkGrupo;
     }
 
     public int getFkEmpresa() {
