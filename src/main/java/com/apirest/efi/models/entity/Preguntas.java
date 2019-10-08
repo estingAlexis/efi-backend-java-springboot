@@ -66,15 +66,12 @@ public class Preguntas implements Serializable {
     private String codigo;
    
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
-    @JsonIgnore
     @ManyToOne(optional = false)
     private CategoriasPregunta idCategoria;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
-    @JsonIgnore
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
     @JoinColumn(name = "id_grupo", referencedColumnName = "id")
-    @JsonIgnore
     @ManyToOne(optional = false)
     private GruposPregunta idGrupo;
    
