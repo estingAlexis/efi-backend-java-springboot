@@ -23,6 +23,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "encuestas")
 @XmlRootElement
@@ -54,16 +57,21 @@ public class Encuestas implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
     private List<EncuestaDetalle> encuestaDetalleList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios idUsuario;
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
     private List<ResultadoEncuesta> resultadoEncuestaList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
     private List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList;
 
@@ -113,7 +121,7 @@ public class Encuestas implements Serializable {
         this.estado = estado;
     }
 
-/*     @XmlTransient
+    @XmlTransient
     @JsonIgnore
     public List<EncuestaDetalle> getEncuestaDetalleList() {
         return encuestaDetalleList;
@@ -157,7 +165,7 @@ public class Encuestas implements Serializable {
 
     public void setResultadoEncuestaDetalleList(List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList) {
         this.resultadoEncuestaDetalleList = resultadoEncuestaDetalleList;
-    } */
+    }
 
     @Override
     public int hashCode() {

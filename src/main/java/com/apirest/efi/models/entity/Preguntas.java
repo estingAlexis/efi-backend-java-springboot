@@ -64,19 +64,20 @@ public class Preguntas implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "codigo")
     private String codigo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPregunta")
-    private List<EncuestaDetalle> encuestaDetalleList;
+   
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
+    @JsonIgnore
     @ManyToOne(optional = false)
     private CategoriasPregunta idCategoria;
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
+    @JsonIgnore
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
     @JoinColumn(name = "id_grupo", referencedColumnName = "id")
+    @JsonIgnore
     @ManyToOne(optional = false)
     private GruposPregunta idGrupo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPregunta")
-    private List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList;
+   
 
     public Preguntas() {
     }
@@ -142,15 +143,7 @@ public class Preguntas implements Serializable {
         this.codigo = codigo;
     }
 
-/*     @XmlTransient
-    @JsonIgnore
-    public List<EncuestaDetalle> getEncuestaDetalleList() {
-        return encuestaDetalleList;
-    }
-
-    public void setEncuestaDetalleList(List<EncuestaDetalle> encuestaDetalleList) {
-        this.encuestaDetalleList = encuestaDetalleList;
-    }
+   
 
     public CategoriasPregunta getIdCategoria() {
         return idCategoria;
@@ -176,15 +169,7 @@ public class Preguntas implements Serializable {
         this.idGrupo = idGrupo;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public List<ResultadoEncuestaDetalle> getResultadoEncuestaDetalleList() {
-        return resultadoEncuestaDetalleList;
-    }
-
-    public void setResultadoEncuestaDetalleList(List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList) {
-        this.resultadoEncuestaDetalleList = resultadoEncuestaDetalleList;
-    } */
+   
 
     @Override
     public int hashCode() {

@@ -20,6 +20,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Entity
 @Table(name = "indicador_grupo")
 @XmlRootElement
@@ -33,6 +39,7 @@ public class IndicadorGrupo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_grupo")
@@ -50,6 +57,9 @@ public class IndicadorGrupo implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
+    @JoinColumn(name = "fk_tipo", referencedColumnName = "id_tipo_indicador")
+    @ManyToOne(optional = false)
+    private IndicadorTipo fkTipo;
 
     public IndicadorGrupo() {
     }
@@ -95,6 +105,15 @@ public class IndicadorGrupo implements Serializable {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+
+    public IndicadorTipo getFkTipo() {
+        return fkTipo;
+    }
+
+    public void setFkTipo(IndicadorTipo fkTipo) {
+        this.fkTipo = fkTipo;
     }
 
     @Override

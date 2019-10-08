@@ -15,6 +15,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Entity
 @Table(name = "indicador_variables")
 @XmlRootElement
@@ -29,6 +36,7 @@ public class IndicadorVariables implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_variable")
@@ -48,6 +56,11 @@ public class IndicadorVariables implements Serializable {
     private int estado;
     @Column(name = "codigo_fut")
     private Integer codigoFut;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "fk_grupo", referencedColumnName = "id_grupo")
+    @ManyToOne(optional = false)
+    private IndicadorGrupo fkGrupo;
+    
 
     public IndicadorVariables() {
     }
@@ -101,6 +114,14 @@ public class IndicadorVariables implements Serializable {
 
     public void setCodigoFut(Integer codigoFut) {
         this.codigoFut = codigoFut;
+    }
+
+    public IndicadorGrupo getFkGrupo() {
+        return fkGrupo;
+    }
+
+    public void setFkGrupo(IndicadorGrupo fkGrupo) {
+        this.fkGrupo = fkGrupo;
     }
 
     @Override

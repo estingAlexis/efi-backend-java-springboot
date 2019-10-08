@@ -1,4 +1,3 @@
-
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
@@ -18,6 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "indicador_tipo")
@@ -32,6 +33,7 @@ public class IndicadorTipo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_tipo_indicador")

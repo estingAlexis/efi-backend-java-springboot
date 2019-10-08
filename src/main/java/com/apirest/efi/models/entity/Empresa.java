@@ -6,6 +6,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
@@ -18,26 +19,11 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "empresa")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Empresa.findAll", query = "SELECT e FROM Empresa e")
-    , @NamedQuery(name = "Empresa.findById", query = "SELECT e FROM Empresa e WHERE e.id = :id")
-    , @NamedQuery(name = "Empresa.findByNombre", query = "SELECT e FROM Empresa e WHERE e.nombre = :nombre")
-    , @NamedQuery(name = "Empresa.findByDireccion", query = "SELECT e FROM Empresa e WHERE e.direccion = :direccion")
-    , @NamedQuery(name = "Empresa.findByTelefono", query = "SELECT e FROM Empresa e WHERE e.telefono = :telefono")
-    , @NamedQuery(name = "Empresa.findByNit", query = "SELECT e FROM Empresa e WHERE e.nit = :nit")
-    , @NamedQuery(name = "Empresa.findByContactoNombre", query = "SELECT e FROM Empresa e WHERE e.contactoNombre = :contactoNombre")
-    , @NamedQuery(name = "Empresa.findByContactoCargo", query = "SELECT e FROM Empresa e WHERE e.contactoCargo = :contactoCargo")
-    , @NamedQuery(name = "Empresa.findByContactoTelefono", query = "SELECT e FROM Empresa e WHERE e.contactoTelefono = :contactoTelefono")
-    , @NamedQuery(name = "Empresa.findByContactoEmail", query = "SELECT e FROM Empresa e WHERE e.contactoEmail = :contactoEmail")
-    , @NamedQuery(name = "Empresa.findByLicencia", query = "SELECT e FROM Empresa e WHERE e.licencia = :licencia")
-    , @NamedQuery(name = "Empresa.findByOrden", query = "SELECT e FROM Empresa e WHERE e.orden = :orden")
-    , @NamedQuery(name = "Empresa.findByEstado", query = "SELECT e FROM Empresa e WHERE e.estado = :estado")
-    , @NamedQuery(name = "Empresa.findByLogo", query = "SELECT e FROM Empresa e WHERE e.logo = :logo")
-    , @NamedQuery(name = "Empresa.findByFkEntidad", query = "SELECT e FROM Empresa e WHERE e.fkEntidad = :fkEntidad")})
 public class Empresa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -104,17 +90,14 @@ public class Empresa implements Serializable {
     @NotNull
     @Column(name = "fk_entidad")
     private long fkEntidad;
-/*     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany( cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<Encuestas> encuestasList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<ResultadoEncuesta> resultadoEncuestaList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpresa")
-    private List<Preguntas> preguntasList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "empresa1")
-    private Empresa empresa;
-    @JoinColumn(name = "id", referencedColumnName = "id", insertable = false, updatable = false)
-    @OneToOne(optional = false) */
-    //private Empresa empresa1;*/
+    private List<Preguntas> preguntasList;;
 
     public Empresa() {
     }
@@ -277,24 +260,8 @@ public class Empresa implements Serializable {
 
     public void setPreguntasList(List<Preguntas> preguntasList) {
         this.preguntasList = preguntasList;
-    }
+    } */
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public Empresa getEmpresa1() {
-        return empresa1;
-    }
-
-    public void setEmpresa1(Empresa empresa1) {
-        this.empresa1 = empresa1;
-    }
-    */
 
     @Override
     public int hashCode() {

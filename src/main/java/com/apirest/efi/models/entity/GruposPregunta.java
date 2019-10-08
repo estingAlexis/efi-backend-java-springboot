@@ -17,6 +17,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Entity
 @Table(name = "grupos_pregunta")
 @XmlRootElement
@@ -28,6 +34,7 @@ public class GruposPregunta implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
@@ -37,7 +44,8 @@ public class GruposPregunta implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "nombre")
     private String nombre;
-/*     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupo")
+/*     @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupo")
     private List<Preguntas> preguntasList; */
 
     public GruposPregunta() {
@@ -76,8 +84,8 @@ public class GruposPregunta implements Serializable {
 
     public void setPreguntasList(List<Preguntas> preguntasList) {
         this.preguntasList = preguntasList;
-    } */
-
+    }
+ */
     @Override
     public int hashCode() {
         int hash = 0;

@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface IndicadorGrupoDao extends JpaRepository<IndicadorGrupo, Integer> {
 
-   @Query(value = "SELECT grupo.*, tipo.nombre_tipo from  [efi_dev].[dbo].[indicador_grupo] as grupo, [efi_dev].[dbo].[indicador_tipo] as tipo where grupo.fk_tipo = tipo.id_tipo_indicador ", nativeQuery = true)
-   List<Object> findWithNombreTipo();
+   @Query("SELECT i FROM IndicadorGrupo i WHERE i.estado = :estado")
+   List<IndicadorGrupo> findByEstado();
  
 }
