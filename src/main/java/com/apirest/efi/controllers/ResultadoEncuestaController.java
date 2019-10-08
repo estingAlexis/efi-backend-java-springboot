@@ -14,7 +14,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.apirest.efi.models.entity.ResultadoEncuesta;
+import com.apirest.efi.models.entity.Usuarios;
 import com.apirest.efi.models.services.ResultadoEncuestaService;
+import com.apirest.efi.models.services.UsuarioService;
+import java.util.Date;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
 @CrossOrigin(origins = { "*" })
 @RestController
@@ -23,23 +27,37 @@ public class ResultadoEncuestaController {
 
     @Autowired
     private ResultadoEncuestaService resultadoEncuestaService;
+    
+    @Autowired
+    private UsuarioService usuarioService;
 
-    @GetMapping("resultadoEncuesta")
+    @GetMapping("resultadoencuesta")
     public List<ResultadoEncuesta> findAll() {
 		return resultadoEncuestaService.findAll();
     }
     
-    @GetMapping("resultadoEncuesta/{id}")
+    @GetMapping("resultadoencuesta/empresa")
+    public List<ResultadoEncuesta> findByEmpresa(OAuth2Authentication auth){
+        String username = auth.getPrincipal().toString();
+        Usuarios user = usuarioService.findByUsername(username);
+        return resultadoEncuestaService.findByEmpresa(user.getIdEmpresa().getId());
+    }
+    
+    @GetMapping("resultadoencuesta/{id}")
     public ResultadoEncuesta findById(@PathVariable("id") Long id) {
 		return resultadoEncuestaService.findById(id);
     }
     
-    @PostMapping("resultadoEncuesta")
-    public ResultadoEncuesta save(@RequestBody ResultadoEncuesta resultadoEncuesta) {
-		return resultadoEncuestaService.save(resultadoEncuesta);
+    @PostMapping("resultadoencuesta")
+    public ResultadoEncuesta save(@RequestBody ResultadoEncuesta resultadoEncuesta, OAuth2Authentication auth) {
+        String username = auth.getPrincipal().toString();
+        Usuarios user = usuarioService.findByUsername(username);
+        resultadoEncuesta.setIdEmpresa(user.getIdEmpresa());
+        resultadoEncuesta.setFecha(new Date());
+        return resultadoEncuestaService.save(resultadoEncuesta);
     }
     
-    @PutMapping("resultadoEncuesta")
+    @PutMapping("resultadoencuesta")
     public ResultadoEncuesta edit(@RequestBody ResultadoEncuesta resultadoEncuesta) {
         ResultadoEncuesta resultadoEncuestaActual = new ResultadoEncuesta();
         ResultadoEncuesta resultadoEncuestaUpdate = new ResultadoEncuesta();

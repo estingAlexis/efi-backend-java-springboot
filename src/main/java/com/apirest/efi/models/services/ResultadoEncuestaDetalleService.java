@@ -23,5 +23,9 @@ public class ResultadoEncuestaDetalleService {
     public ResultadoEncuestaDetalle save(ResultadoEncuestaDetalle resultadoEncuestaDetalle){
         return resultadoEncuestaDetalleDao.save(resultadoEncuestaDetalle);
     }
+    
+    public List<ResultadoEncuestaDetalle> findByResultadoEncuesta(Long idResultadoEncuesta){
+        return resultadoEncuestaDetalleDao.findByResultadoEncuesta(idResultadoEncuesta);
+    }
 
 }

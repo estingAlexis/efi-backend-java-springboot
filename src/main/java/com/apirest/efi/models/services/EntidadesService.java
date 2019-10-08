@@ -23,5 +23,10 @@ public class EntidadesService {
     public Entidades save(Entidades entidades){
         return entidadesDao.save(entidades);
     }
+    
+    
+    public List<Entidades> getEntidadesEmpresa(Long idEntidad){
+        return entidadesDao.filterByEmpresa(idEntidad);
+    }
 
 }

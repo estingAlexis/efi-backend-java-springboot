@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -75,9 +76,15 @@ public class Usuarios implements Serializable {
     @Column(name = "username")
     private String username;
     
-    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+        @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
 	private List<Roles> roles;
+    
+        @JoinColumn(name = "id_empresa", referencedColumnName = "id")
+	@ManyToOne(optional = false)
+	private Empresa idEmpresa;
+    
+    
 
 	public List<Roles> getRoles() {
 		return roles;
@@ -191,6 +198,20 @@ public class Usuarios implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.Usuarios[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the idEmpresa
+     */
+    public Empresa getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    /**
+     * @param idEmpresa the idEmpresa to set
+     */
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
     
 }

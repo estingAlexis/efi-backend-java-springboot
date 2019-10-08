@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.apirest.efi.models.entity.ResultadoEncuestaDetalle;
 import com.apirest.efi.models.services.ResultadoEncuestaDetalleService;
+import java.util.Date;
 
 @CrossOrigin(origins = { "*" })
 @RestController
@@ -24,22 +25,40 @@ public class ResultadoEncuestaDetalleController {
     @Autowired
     private ResultadoEncuestaDetalleService resultadoEncuestaDetalleService;
 
-    @GetMapping("resultadoEncuestaDetalle")
+    @GetMapping("resultadoencuestaDetalle")
     public List<ResultadoEncuestaDetalle> findAll() {
 		return resultadoEncuestaDetalleService.findAll();
     }
     
-    @GetMapping("resultadoEncuestaDetalle/{id}")
+    @GetMapping("resultadoencuestaDetalle/{id}")
     public ResultadoEncuestaDetalle findById(@PathVariable("id") Long id) {
 		return resultadoEncuestaDetalleService.findById(id);
     }
     
-    @PostMapping("resultadoEncuestaDetalle")
+    @PostMapping("resultadoencuestaDetalle")
     public ResultadoEncuestaDetalle save(@RequestBody ResultadoEncuestaDetalle resultadoEncuestaDetalle) {
 		return resultadoEncuestaDetalleService.save(resultadoEncuestaDetalle);
     }
     
-    @PutMapping("resultadoEncuestaDetalle")
+    
+    
+     @PostMapping("resultadoencuestaDetalle/preguntas")
+    public List<ResultadoEncuestaDetalle> saveVarios(@RequestBody List<ResultadoEncuestaDetalle> resultadoEncuestaDetalle) {
+            
+            resultadoEncuestaDetalle.forEach((e) ->{
+                    if(e.getResultado() == 2){
+                        e.setSeguimiento((short)0);
+                        e.setFechaSeguimiento(new Date());
+                    }
+                resultadoEncuestaDetalleService.save(e);
+                
+            });
+        
+		return resultadoEncuestaDetalle;
+    }
+    
+    
+    @PutMapping("resultadoencuestaDetalle")
     public ResultadoEncuestaDetalle edit(@RequestBody ResultadoEncuestaDetalle resultadoEncuestaDetalle) {
         ResultadoEncuestaDetalle resultadoEncuestaDetalleActual = new ResultadoEncuestaDetalle();
         ResultadoEncuestaDetalle resultadoEncuestaDetalleUpdate = new ResultadoEncuestaDetalle();
@@ -50,4 +69,11 @@ public class ResultadoEncuestaDetalleController {
         }
         return resultadoEncuestaDetalleUpdate;
 	}
+    
+    
+     @GetMapping("resultadoencuestadetalle/{idResultadoEncuesta}")
+     public List<ResultadoEncuestaDetalle> getByResultadoEncuesta(@PathVariable("idResultadoEncuesta") Long idResultadoEncuesta){
+         return resultadoEncuestaDetalleService.findByResultadoEncuesta(idResultadoEncuesta);
+     }
+    
 }

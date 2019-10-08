@@ -54,18 +54,14 @@ public class Encuestas implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
-    private List<EncuestaDetalle> encuestaDetalleList;
+  
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios idUsuario;
-     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
-    private List<ResultadoEncuesta> resultadoEncuestaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
-    private List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList;
+    
 
     public Encuestas() {
     }
