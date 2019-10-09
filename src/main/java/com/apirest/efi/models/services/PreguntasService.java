@@ -12,11 +12,15 @@ public class PreguntasService {
     @Autowired
     private PreguntasDao preguntasDao;
     
-    public List<Preguntas> findAll(){
+    public List<Preguntas> findAll() {
         return preguntasDao.findAll();
     }
 
-    public Preguntas findById(Long id){
+    public List<Object> findAllNative() {
+        return preguntasDao.find();
+    }
+
+    public Preguntas findById(Long id) {
         return preguntasDao.findById(id).orElse(null);
     }
 

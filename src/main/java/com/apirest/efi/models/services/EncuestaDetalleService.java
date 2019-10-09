@@ -16,6 +16,10 @@ public class EncuestaDetalleService {
         return encuestaDetalleDao.findAll();
     }
 
+    public List<EncuestaDetalle> findByIdEncuesta(Integer id) {
+        return encuestaDetalleDao.findByIdEncuesta(id);
+    }
+
     public EncuestaDetalle findById(Long id){
         return encuestaDetalleDao.findById(id).orElse(null);
     }

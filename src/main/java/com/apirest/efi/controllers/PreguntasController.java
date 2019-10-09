@@ -28,6 +28,11 @@ public class PreguntasController {
     public List<Preguntas> findAll() {
 		return preguntasService.findAll();
     }
+
+    @GetMapping("preguntas/native")
+    public List<Object> findAl() {
+		return preguntasService.findAllNative();
+    }
     
     @GetMapping("preguntas/{id}")
     public Preguntas findById(@PathVariable("id") Long id) {

@@ -28,6 +28,11 @@ public class EncuestaDetalleController {
     public List<EncuestaDetalle> findAll(){
 		return encuestaDetalleService.findAll();
     }
+
+    @GetMapping("encuestaDetalle/encuesta/{id}")
+    public List<EncuestaDetalle> findById(@PathVariable("id") Integer id) {
+		return encuestaDetalleService.findByIdEncuesta(id);
+    }
     
     @GetMapping("encuestaDetalle/{id}")
     public EncuestaDetalle findById(@PathVariable("id") Long id) {

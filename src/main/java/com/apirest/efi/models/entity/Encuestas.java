@@ -26,6 +26,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Entity
 @Table(name = "encuestas")
 @XmlRootElement
@@ -38,6 +41,7 @@ public class Encuestas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
@@ -49,7 +53,6 @@ public class Encuestas implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     @Basic(optional = false)
-    @NotNull
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
@@ -57,23 +60,14 @@ public class Encuestas implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
-    private List<EncuestaDetalle> encuestaDetalleList;
-    @LazyCollection(LazyCollectionOption.FALSE)
+    
     @JoinColumn(name = "id_empresa", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Empresa idEmpresa;
-    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios idUsuario;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
-    private List<ResultadoEncuesta> resultadoEncuestaList;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEncuesta")
-    private List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList;
+
 
     public Encuestas() {
     }
@@ -121,15 +115,6 @@ public class Encuestas implements Serializable {
         this.estado = estado;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public List<EncuestaDetalle> getEncuestaDetalleList() {
-        return encuestaDetalleList;
-    }
-
-    public void setEncuestaDetalleList(List<EncuestaDetalle> encuestaDetalleList) {
-        this.encuestaDetalleList = encuestaDetalleList;
-    }
 
     public Empresa getIdEmpresa() {
         return idEmpresa;
@@ -145,26 +130,6 @@ public class Encuestas implements Serializable {
 
     public void setIdUsuario(Usuarios idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public List<ResultadoEncuesta> getResultadoEncuestaList() {
-        return resultadoEncuestaList;
-    }
-
-    public void setResultadoEncuestaList(List<ResultadoEncuesta> resultadoEncuestaList) {
-        this.resultadoEncuestaList = resultadoEncuestaList;
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public List<ResultadoEncuestaDetalle> getResultadoEncuestaDetalleList() {
-        return resultadoEncuestaDetalleList;
-    }
-
-    public void setResultadoEncuestaDetalleList(List<ResultadoEncuestaDetalle> resultadoEncuestaDetalleList) {
-        this.resultadoEncuestaDetalleList = resultadoEncuestaDetalleList;
     }
 
     @Override
