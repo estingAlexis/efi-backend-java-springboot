@@ -55,4 +55,23 @@ public class EncuestaDetalleController {
         }
         return encuestaDetalleUpdate;
 	}
+    
+    
+    @GetMapping("encuestadetalle/filter/{idEncuesta}/{idGrupo}/{idCategoria}/{idEmpresa}/{codigo}")
+    public List<EncuestaDetalle> filter(@PathVariable("idEncuesta") Long idEncuesta,
+                                        @PathVariable("idGrupo") Long idGrupo,
+                                        @PathVariable("idCategoria") Long idCategoria,
+                                        @PathVariable("idEmpresa") Long idEmpresa,
+                                        @PathVariable("codigo") String codigo){
+        return encuestaDetalleService.findByVarios(idEncuesta, idGrupo, idCategoria, idEmpresa, codigo);
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

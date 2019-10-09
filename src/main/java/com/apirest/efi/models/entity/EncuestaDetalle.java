@@ -7,21 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "encuesta_detalle")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "EncuestaDetalle.findAll", query = "SELECT e FROM EncuestaDetalle e")
-    , @NamedQuery(name = "EncuestaDetalle.findById", query = "SELECT e FROM EncuestaDetalle e WHERE e.id = :id")
-    , @NamedQuery(name = "EncuestaDetalle.findByRequerido", query = "SELECT e FROM EncuestaDetalle e WHERE e.requerido = :requerido")})
 public class EncuestaDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,14 +24,19 @@ public class EncuestaDetalle implements Serializable {
     @NotNull
     @Column(name = "requerido")
     private short requerido;
-    @JsonIgnore
+   
     @JoinColumn(name = "id_encuesta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Encuestas idEncuesta;
-    @JsonIgnore
+    
     @JoinColumn(name = "id_pregunta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Preguntas idPregunta;
+    
+    @NotNull
+    @Column(name = "estado")
+    private int estado;
+    
 
     public EncuestaDetalle() {
     }
@@ -110,6 +105,20 @@ public class EncuestaDetalle implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.EncuestaDetalle[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
     
 }

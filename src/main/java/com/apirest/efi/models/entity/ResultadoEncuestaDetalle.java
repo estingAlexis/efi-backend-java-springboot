@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -40,8 +42,8 @@ public class ResultadoEncuestaDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id")
     private Long id;
     @Basic(optional = false)
@@ -49,7 +51,6 @@ public class ResultadoEncuestaDetalle implements Serializable {
     @Column(name = "resultado")
     private short resultado;
     @Basic(optional = false)
-    @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
     @Column(name = "observacion")
@@ -61,12 +62,17 @@ public class ResultadoEncuestaDetalle implements Serializable {
     @Column(name = "fecha_seguimiento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaSeguimiento;
-    @JoinColumn(name = "id_encuesta", referencedColumnName = "id")
+    @JoinColumn(name = "id_resultado_encuesta", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Encuestas idEncuesta;
+    private ResultadoEncuesta idResultadoEncuesta;
     @JoinColumn(name = "id_pregunta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Preguntas idPregunta;
+    
+    @NotNull
+    @Column(name = "estado")
+    private int estado;
+    
 
     public ResultadoEncuestaDetalle() {
     }
@@ -122,13 +128,7 @@ public class ResultadoEncuestaDetalle implements Serializable {
         this.fechaSeguimiento = fechaSeguimiento;
     }
 
-    public Encuestas getIdEncuesta() {
-        return idEncuesta;
-    }
-
-    public void setIdEncuesta(Encuestas idEncuesta) {
-        this.idEncuesta = idEncuesta;
-    }
+  
 
     public Preguntas getIdPregunta() {
         return idPregunta;
@@ -161,6 +161,34 @@ public class ResultadoEncuestaDetalle implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.ResultadoEncuestaDetalle[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the idResultadoEncuesta
+     */
+    public ResultadoEncuesta getIdResultadoEncuesta() {
+        return idResultadoEncuesta;
+    }
+
+    /**
+     * @param idResultadoEncuesta the idResultadoEncuesta to set
+     */
+    public void setIdResultadoEncuesta(ResultadoEncuesta idResultadoEncuesta) {
+        this.idResultadoEncuesta = idResultadoEncuesta;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
     
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,14 +32,15 @@ public class ResultadoEncuesta implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Column(name = "id")
+    @Column(name = "id" )
     private Long id;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_entidad")
-    private long idEntidad;
+     @JoinColumn(name = "id_entidad", referencedColumnName = "id_entidad")
+    @ManyToOne(optional = false)
+    private Entidades idEntidad;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha")
@@ -54,6 +57,11 @@ public class ResultadoEncuesta implements Serializable {
     @JoinColumn(name = "id_encuesta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Encuestas idEncuesta;
+    
+    @NotNull
+    @Column(name = "estado")
+    private int estado;
+    
 
     public ResultadoEncuesta() {
     }
@@ -62,7 +70,7 @@ public class ResultadoEncuesta implements Serializable {
         this.id = id;
     }
 
-    public ResultadoEncuesta(Long id, long idEntidad, Date fecha, String periodo) {
+    public ResultadoEncuesta(Long id, Entidades idEntidad, Date fecha, String periodo) {
         this.id = id;
         this.idEntidad = idEntidad;
         this.fecha = fecha;
@@ -77,13 +85,7 @@ public class ResultadoEncuesta implements Serializable {
         this.id = id;
     }
 
-    public long getIdEntidad() {
-        return idEntidad;
-    }
-
-    public void setIdEntidad(long idEntidad) {
-        this.idEntidad = idEntidad;
-    }
+   
 
     public Date getFecha() {
         return fecha;
@@ -140,6 +142,34 @@ public class ResultadoEncuesta implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.ResultadoEncuesta[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the idEntidad
+     */
+    public Entidades getIdEntidad() {
+        return idEntidad;
+    }
+
+    /**
+     * @param idEntidad the idEntidad to set
+     */
+    public void setIdEntidad(Entidades idEntidad) {
+        this.idEntidad = idEntidad;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
     
 }

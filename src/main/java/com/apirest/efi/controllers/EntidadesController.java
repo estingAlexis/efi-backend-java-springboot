@@ -1,5 +1,6 @@
 package com.apirest.efi.controllers;
 
+import com.apirest.efi.models.entity.Empresa;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.apirest.efi.models.entity.Entidades;
+import com.apirest.efi.models.entity.Usuarios;
+import com.apirest.efi.models.services.EmpresaService;
 import com.apirest.efi.models.services.EntidadesService;
+import com.apirest.efi.models.services.UsuarioService;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
 @CrossOrigin(origins = { "*" })
 @RestController
@@ -23,6 +28,13 @@ public class EntidadesController {
 
     @Autowired
     private EntidadesService entidadesService;
+    
+    
+    @Autowired
+    private UsuarioService usuarioService;
+    
+    @Autowired
+    private EmpresaService empresaService;
 
     @GetMapping("entidades")
     public List<Entidades> findAll() {
@@ -50,4 +62,15 @@ public class EntidadesController {
         }
         return entidadesUpdate;
 	}
+    
+    
+    
+    @GetMapping("entidades/empresa")
+    public List<Entidades> getEntidadesEmpresa(OAuth2Authentication auth){
+         String username = auth.getPrincipal().toString();
+         Usuarios user = usuarioService.findByUsername(username);
+         Empresa empresa = empresaService.findById(user.getIdEmpresa().getId());
+         return entidadesService.getEntidadesEmpresa(empresa.getFkEntidad());
+        
+    }
 }

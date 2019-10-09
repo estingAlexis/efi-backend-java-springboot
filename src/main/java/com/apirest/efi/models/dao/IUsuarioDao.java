@@ -6,4 +6,8 @@ import com.apirest.efi.models.entity.Usuarios;
 
 public interface IUsuarioDao extends CrudRepository<Usuarios, Long> {
     public Usuarios findByUsername(String username);    
+    
+    
+    
+    
 }

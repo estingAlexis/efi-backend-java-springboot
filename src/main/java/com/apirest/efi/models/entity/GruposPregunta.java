@@ -1,24 +1,17 @@
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,9 +37,7 @@ public class GruposPregunta implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "nombre")
     private String nombre;
-/*     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupo")
-    private List<Preguntas> preguntasList; */
+    
 
     public GruposPregunta() {
     }
@@ -75,17 +66,8 @@ public class GruposPregunta implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-/* 
-    @XmlTransient
-    @JsonIgnore
-    public List<Preguntas> getPreguntasList() {
-        return preguntasList;
-    }
 
-    public void setPreguntasList(List<Preguntas> preguntasList) {
-        this.preguntasList = preguntasList;
-    }
- */
+  
     @Override
     public int hashCode() {
         int hash = 0;

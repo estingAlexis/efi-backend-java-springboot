@@ -27,4 +27,8 @@ public class EncuestaDetalleService {
     public EncuestaDetalle save(EncuestaDetalle encuestaDetalle){
         return encuestaDetalleDao.save(encuestaDetalle);
     }
+    
+    public List<EncuestaDetalle> findByVarios(Long idEncuesta, Long idGrupo, Long idCategoria, Long idEmpresa, String codigo ){
+        return encuestaDetalleDao.filterByVarios(idEncuesta, idGrupo, idCategoria, idEmpresa, codigo);
+    }
 }

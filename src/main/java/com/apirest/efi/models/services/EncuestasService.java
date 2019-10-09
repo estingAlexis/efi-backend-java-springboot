@@ -23,4 +23,8 @@ public class EncuestasService {
     public Encuestas save(Encuestas encuestas){
         return encuestasDao.save(encuestas);
     }
+    
+    public List<Encuestas> findByEmpresa(Long idEmpresa){
+        return encuestasDao.filterByEmpresa(idEmpresa);
+    }
 }
