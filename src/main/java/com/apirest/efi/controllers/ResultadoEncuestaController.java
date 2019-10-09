@@ -14,11 +14,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.apirest.efi.models.entity.ResultadoEncuesta;
+import com.apirest.efi.models.entity.ResultadoEncuestaDetalle;
 import com.apirest.efi.models.entity.Usuarios;
+import com.apirest.efi.models.services.ResultadoEncuestaDetalleService;
 import com.apirest.efi.models.services.ResultadoEncuestaService;
 import com.apirest.efi.models.services.UsuarioService;
 import java.util.Date;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 @CrossOrigin(origins = { "*" })
 @RestController
@@ -30,6 +33,9 @@ public class ResultadoEncuestaController {
     
     @Autowired
     private UsuarioService usuarioService;
+    
+    @Autowired
+    private ResultadoEncuestaDetalleService resultadoEncuestaDetalleService;
 
     @GetMapping("resultadoencuesta")
     public List<ResultadoEncuesta> findAll() {
@@ -42,6 +48,14 @@ public class ResultadoEncuestaController {
         Usuarios user = usuarioService.findByUsername(username);
         return resultadoEncuestaService.findByEmpresa(user.getIdEmpresa().getId());
     }
+    
+    @PutMapping("resultadoencuesta/eliminar")
+    public ResultadoEncuesta eliminar(@RequestBody ResultadoEncuesta resultadoEncuesta){
+           resultadoEncuesta.setEstado(1);
+           resultadoEncuestaDetalleService.deletePreguntasByEncuesta(resultadoEncuesta.getId());
+           return resultadoEncuestaService.save(resultadoEncuesta);
+    }
+    
     
     @GetMapping("resultadoencuesta/{id}")
     public ResultadoEncuesta findById(@PathVariable("id") Long id) {

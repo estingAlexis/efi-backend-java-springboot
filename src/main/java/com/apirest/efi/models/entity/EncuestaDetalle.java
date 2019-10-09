@@ -32,6 +32,11 @@ public class EncuestaDetalle implements Serializable {
     @JoinColumn(name = "id_pregunta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Preguntas idPregunta;
+    
+    @NotNull
+    @Column(name = "estado")
+    private int estado;
+    
 
     public EncuestaDetalle() {
     }
@@ -100,6 +105,20 @@ public class EncuestaDetalle implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.EncuestaDetalle[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
     
 }

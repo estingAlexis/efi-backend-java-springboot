@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface ResultadoEncuestaDao extends JpaRepository<ResultadoEncuesta, Long> {
 
-        @Query("SELECT r FROM ResultadoEncuesta r WHERE (r.idEmpresa.id = :idEmpresa)")
+        @Query("SELECT r FROM ResultadoEncuesta r WHERE (r.idEmpresa.id = :idEmpresa) AND (r.estado = 0)")
         public List<ResultadoEncuesta> findByEmpresa(@Param("idEmpresa") Long idEmpresa);
     
 }

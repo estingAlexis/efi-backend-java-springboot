@@ -14,7 +14,8 @@ public interface EncuestaDetalleDao extends JpaRepository<EncuestaDetalle, Long>
             + " AND (e.idPregunta.idGrupo.id = :idGrupo OR :idGrupo = 0 )"
             + " AND (e.idPregunta.idCategoria.id = :idCategoria OR :idCategoria = 0 )"
             + " AND (e.idPregunta.idEmpresa.id = :idEmpresa OR :idEmpresa = 0 )"
-            + " AND (e.idPregunta.codigo = :codigo OR :codigo = '0') ")
+            + " AND (e.idPregunta.codigo = :codigo OR :codigo = '0') "
+            + " AND (e.estado = 0)")
     public List<EncuestaDetalle> filterByVarios(@Param("idEncuesta") Long idEncuesta, @Param("idGrupo") Long idGrupo, @Param("idCategoria") Long idCategoria, @Param("idEmpresa") Long idEmpresa, @Param("codigo") String codigo);
     
     

@@ -57,6 +57,11 @@ public class ResultadoEncuesta implements Serializable {
     @JoinColumn(name = "id_encuesta", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Encuestas idEncuesta;
+    
+    @NotNull
+    @Column(name = "estado")
+    private int estado;
+    
 
     public ResultadoEncuesta() {
     }
@@ -151,6 +156,20 @@ public class ResultadoEncuesta implements Serializable {
      */
     public void setIdEntidad(Entidades idEntidad) {
         this.idEntidad = idEntidad;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
     
 }
