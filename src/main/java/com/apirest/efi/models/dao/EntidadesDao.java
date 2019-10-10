@@ -13,5 +13,8 @@ public interface EntidadesDao extends JpaRepository<Entidades, Long> {
         "ORDER BY id_entidad;", nativeQuery = true)
         public List<Entidades> filterByEmpresa(@Param("idEntidad") Long idEntidad);
 
+
+        @Query("SELECT e FROM Entidades e WHERE e.codigoChip = :codigoChip")
+        public List<Entidades> filterByCodigoChip(@Param("codigoChip") Integer codigoChip);
     
 }

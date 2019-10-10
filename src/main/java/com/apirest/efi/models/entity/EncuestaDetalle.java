@@ -10,12 +10,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Entity
 @Table(name = "encuesta_detalle")
 public class EncuestaDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")

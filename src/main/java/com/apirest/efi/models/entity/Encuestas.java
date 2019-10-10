@@ -9,29 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "encuestas")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Encuestas.findAll", query = "SELECT e FROM Encuestas e")
-    , @NamedQuery(name = "Encuestas.findById", query = "SELECT e FROM Encuestas e WHERE e.id = :id")
-    , @NamedQuery(name = "Encuestas.findByFecha", query = "SELECT e FROM Encuestas e WHERE e.fecha = :fecha")
-    , @NamedQuery(name = "Encuestas.findByEstado", query = "SELECT e FROM Encuestas e WHERE e.estado = :estado")})
 public class Encuestas implements Serializable {
 
     private static final long serialVersionUID = 1L;
