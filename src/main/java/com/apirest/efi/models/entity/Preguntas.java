@@ -1,9 +1,6 @@
 package com.apirest.efi.models.entity;
-
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,6 +14,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Entity
 @Table(name = "preguntas")
 @XmlRootElement
@@ -28,6 +28,7 @@ public class Preguntas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
@@ -61,6 +62,11 @@ public class Preguntas implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "codigo")
     private String codigo;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estado")
+    private Integer estado;
    
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -70,8 +76,7 @@ public class Preguntas implements Serializable {
     private Empresa idEmpresa;
     @JoinColumn(name = "id_grupo", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private GruposPregunta idGrupo;
-   
+    private GruposPregunta idGrupo;   
 
     public Preguntas() {
     }
@@ -137,8 +142,6 @@ public class Preguntas implements Serializable {
         this.codigo = codigo;
     }
 
-   
-
     public CategoriasPregunta getIdCategoria() {
         return idCategoria;
     }
@@ -163,7 +166,7 @@ public class Preguntas implements Serializable {
         this.idGrupo = idGrupo;
     }
 
-   
+    
 
     @Override
     public int hashCode() {
@@ -189,5 +192,14 @@ public class Preguntas implements Serializable {
     public String toString() {
         return "com.apirest.efi.models.entity.Preguntas[ id=" + id + " ]";
     }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
+
     
 }

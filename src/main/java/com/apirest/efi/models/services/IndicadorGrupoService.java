@@ -12,15 +12,19 @@ public class IndicadorGrupoService {
     @Autowired
     private IndicadorGrupoDao indicadorGrupoDao;
     
-    public List<IndicadorGrupo> findAll(){
+    public List<IndicadorGrupo> findAll() {
         return indicadorGrupoDao.findAll();
     }
 
-    public IndicadorGrupo findById(Integer id){
+    public List<IndicadorGrupo> findByEstado(Integer estado) {
+        return indicadorGrupoDao.findByEstado(estado);
+    }
+
+    public IndicadorGrupo findById(Integer id) {
         return indicadorGrupoDao.findById(id).orElse(null);
     }
 
-    public IndicadorGrupo save(IndicadorGrupo indicadorGrupo){
+    public IndicadorGrupo save(IndicadorGrupo indicadorGrupo) {
         return indicadorGrupoDao.save(indicadorGrupo);
     }
 

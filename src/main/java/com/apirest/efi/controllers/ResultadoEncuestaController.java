@@ -1,5 +1,16 @@
 package com.apirest.efi.controllers;
 
+import java.util.Date;
+import java.util.List;
+
+import com.apirest.efi.models.entity.ResultadoEncuesta;
+import com.apirest.efi.models.entity.Usuarios;
+import com.apirest.efi.models.services.ResultadoEncuestaDetalleService;
+import com.apirest.efi.models.services.ResultadoEncuestaService;
+import com.apirest.efi.models.services.UsuarioService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,20 +19,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.apirest.efi.models.entity.ResultadoEncuesta;
-import com.apirest.efi.models.entity.ResultadoEncuestaDetalle;
-import com.apirest.efi.models.entity.Usuarios;
-import com.apirest.efi.models.services.ResultadoEncuestaDetalleService;
-import com.apirest.efi.models.services.ResultadoEncuestaService;
-import com.apirest.efi.models.services.UsuarioService;
-import java.util.Date;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.web.bind.annotation.DeleteMapping;
 
 @CrossOrigin(origins = { "*" })
 @RestController

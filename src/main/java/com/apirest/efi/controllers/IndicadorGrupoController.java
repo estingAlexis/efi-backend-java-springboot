@@ -21,33 +21,51 @@ import com.apirest.efi.models.services.IndicadorGrupoService;
 @RequestMapping("/efi/")
 public class IndicadorGrupoController {
 
-    @Autowired
-    private IndicadorGrupoService indicadorGrupoService;
+  @Autowired
+  private IndicadorGrupoService indicadorGrupoService;
 
-    @GetMapping("indicadorGrupo")
-    public List<IndicadorGrupo> findAll() {
-		return indicadorGrupoService.findAll();
-    }
-    
-    @GetMapping("indicadorGrupo/{id}")
-    public IndicadorGrupo findById(@PathVariable("id") Integer id) {
-		return indicadorGrupoService.findById(id);
-    }
-    
-    @PostMapping("indicadorGrupo")
-    public IndicadorGrupo save(@RequestBody IndicadorGrupo indicadorGrupo) {
-		return indicadorGrupoService.save(indicadorGrupo);
-    }
-    
-    @PutMapping("indicadorGrupo")
-    public IndicadorGrupo edit(@RequestBody IndicadorGrupo indicadorGrupo) {
-        IndicadorGrupo indicadorGrupoActual = new IndicadorGrupo();
-        IndicadorGrupo indicadorGrupoUpdate = new IndicadorGrupo();
-        indicadorGrupoActual = indicadorGrupoService.findById(indicadorGrupo.getIdGrupo());
+  @GetMapping("indicadorGrupo")
+  public List<IndicadorGrupo> findAll() {
+    return indicadorGrupoService.findAll();
+  }
 
-        if (indicadorGrupoActual != null) {
-            indicadorGrupoUpdate = indicadorGrupoService.save(indicadorGrupo);
-        }
-        return indicadorGrupoUpdate;
-	}
+  @GetMapping("indicadorGrupo/{id}")
+  public IndicadorGrupo findById(@PathVariable("id") Integer id) {
+    return indicadorGrupoService.findById(id);
+  }
+
+  @GetMapping("indicadorGrupo/estado/{estado}")
+  public List<IndicadorGrupo> findByEstado(@PathVariable("estado") Integer estado) {
+    return indicadorGrupoService.findByEstado(estado);
+  }
+
+  @PostMapping("indicadorGrupo")
+  public IndicadorGrupo save(@RequestBody IndicadorGrupo indicadorGrupo) {
+    return indicadorGrupoService.save(indicadorGrupo);
+  }
+
+  @PutMapping("indicadorGrupo")
+  public IndicadorGrupo edit(@RequestBody IndicadorGrupo indicadorGrupo) {
+    IndicadorGrupo indicadorGrupoActual = new IndicadorGrupo();
+    IndicadorGrupo indicadorGrupoUpdate = new IndicadorGrupo();
+    indicadorGrupoActual = indicadorGrupoService.findById(indicadorGrupo.getIdGrupo());
+
+    if (indicadorGrupoActual != null) {
+      indicadorGrupoUpdate = indicadorGrupoService.save(indicadorGrupo);
+    }
+    return indicadorGrupoUpdate;
+  }
+
+  @PutMapping("indicadorGrupo/estado")
+  public IndicadorGrupo cambiarEstado(@RequestBody IndicadorGrupo indicadorGrupo) {
+    IndicadorGrupo IndicadorGrupoUpdate = null;
+    IndicadorGrupo indicadorGrupoActual = indicadorGrupoService.findById(indicadorGrupo.getIdGrupo());
+
+    if (indicadorGrupoActual != null) {
+      if(indicadorGrupo.getEstado() == 1) {indicadorGrupo.setEstado(0);} else
+      {indicadorGrupo.setEstado(1);}
+      IndicadorGrupoUpdate = indicadorGrupoService.save(indicadorGrupo);
+    }
+    return IndicadorGrupoUpdate;
+  }
 }

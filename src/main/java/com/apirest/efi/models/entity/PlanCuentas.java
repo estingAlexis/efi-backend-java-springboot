@@ -1,9 +1,12 @@
 package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -30,6 +33,7 @@ public class PlanCuentas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_cuenta")
@@ -62,9 +66,9 @@ public class PlanCuentas implements Serializable {
     @Size(max = 10)
     @Column(name = "entidad")
     private String entidad;
-    @Size(max = 10)
     @Column(name = "estado")
-    private String estado;
+    @NotNull
+    private Integer estado;
 
     public PlanCuentas() {
     }
@@ -145,14 +149,6 @@ public class PlanCuentas implements Serializable {
         this.entidad = entidad;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -176,6 +172,14 @@ public class PlanCuentas implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.PlanCuentas[ idCuenta=" + idCuenta + " ]";
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
     
 }

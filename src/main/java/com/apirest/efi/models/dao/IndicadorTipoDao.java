@@ -11,6 +11,6 @@ import org.springframework.data.repository.query.Param;
 public interface IndicadorTipoDao extends JpaRepository<IndicadorTipo, Integer> {
 
    @Query("SELECT i FROM IndicadorTipo i WHERE i.estado = :estado")
-   List<IndicadorTipo> findByEstado();
+   List<IndicadorTipo> findByEstado(@Param("estado") Integer estado);
 
 }

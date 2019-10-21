@@ -2,9 +2,12 @@ package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -29,6 +32,7 @@ public class Categorias implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_categoria")
@@ -50,6 +54,10 @@ public class Categorias implements Serializable {
     private BigDecimal habitantesSuperior;
     @Column(name = "ingresos_corrientes")
     private Long ingresosCorrientes;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "estado")
+    private int estado;
 
     public Categorias() {
     }
@@ -142,6 +150,14 @@ public class Categorias implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.Categorias[ idCategoria=" + idCategoria + " ]";
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
     
 }

@@ -21,33 +21,49 @@ import com.apirest.efi.models.services.IndicadorTipoService;
 @RequestMapping("/efi/")
 public class IndicadorTipoController {
 
-    @Autowired
-    private IndicadorTipoService indicadorTipoService;
+  @Autowired
+  private IndicadorTipoService indicadorTipoService;
 
-    @GetMapping("indicadorTipo")
-    public List<IndicadorTipo> findAll() {
-		return indicadorTipoService.findAll();
-    }
-    
-    @GetMapping("indicadorTipo/{id}")
-    public IndicadorTipo findById(@PathVariable("id") Integer id) {
-		return indicadorTipoService.findById(id);
-    }
-    
-    @PostMapping("indicadorTipo")
-    public IndicadorTipo save(@RequestBody IndicadorTipo indicadorTipo) {
-		return indicadorTipoService.save(indicadorTipo);
-    }
-    
-    @PutMapping("indicadorTipo")
-    public IndicadorTipo edit(@RequestBody IndicadorTipo indicadorTipo) {
-        IndicadorTipo indicadorGrupoActual = new IndicadorTipo();
-        IndicadorTipo indicadorGrupoUpdate = new IndicadorTipo();
-        indicadorGrupoActual = indicadorTipoService.findById(indicadorTipo.getIdTipoIndicador());
+  @GetMapping("indicadorTipo")
+  public List<IndicadorTipo> findAll() {
+    return indicadorTipoService.findAll();
+  }
 
-        if (indicadorGrupoActual != null) {
-            indicadorGrupoUpdate = indicadorTipoService.save(indicadorTipo);
-        }
-        return indicadorGrupoUpdate;
-	}
+  @GetMapping("indicadorTipo/{id}")
+  public IndicadorTipo findById(@PathVariable("id") Integer id) {
+    return indicadorTipoService.findById(id);
+  }
+
+  @PostMapping("indicadorTipo")
+  public IndicadorTipo save(@RequestBody IndicadorTipo indicadorTipo) {
+    return indicadorTipoService.save(indicadorTipo);
+  }
+
+  @PutMapping("indicadorTipo")
+  public IndicadorTipo edit(@RequestBody IndicadorTipo indicadorTipo) {
+    IndicadorTipo indicadorGrupoActual = new IndicadorTipo();
+    IndicadorTipo indicadorGrupoUpdate = new IndicadorTipo();
+    indicadorGrupoActual = indicadorTipoService.findById(indicadorTipo.getIdTipoIndicador());
+
+    if (indicadorGrupoActual != null) {
+      indicadorGrupoUpdate = indicadorTipoService.save(indicadorTipo);
+    }
+    return indicadorGrupoUpdate;
+  }
+
+  @PutMapping("indicadorTipo/estado")
+  public IndicadorTipo cambiarEstado(@RequestBody IndicadorTipo indicadorTipo) {
+    IndicadorTipo indicadorTipoUpdate = null;
+    IndicadorTipo indicadorTipoActual = indicadorTipoService.findById(indicadorTipo.getIdTipoIndicador());
+
+    if (indicadorTipoActual != null) {
+      if (indicadorTipo.getEstado() == 1) {
+        indicadorTipo.setEstado(0);
+      } else {
+        indicadorTipo.setEstado(1);
+      }
+      indicadorTipoUpdate = indicadorTipoService.save(indicadorTipo);
+    }
+    return indicadorTipoUpdate;
+  }
 }

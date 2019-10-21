@@ -21,38 +21,54 @@ import com.apirest.efi.models.services.PreguntasService;
 @RequestMapping("/efi/")
 public class PreguntasController {
 
-    @Autowired
-    private PreguntasService preguntasService;
+  @Autowired
+  private PreguntasService preguntasService;
 
-    @GetMapping("preguntas")
-    public List<Preguntas> findAll() {
-		return preguntasService.findAll();
-    }
+  @GetMapping("preguntas")
+  public List<Preguntas> findAll() {
+    return preguntasService.findAll();
+  }
 
-    @GetMapping("preguntas/native")
-    public List<Object> findAl() {
-		return preguntasService.findAllNative();
-    }
-    
-    @GetMapping("preguntas/{id}")
-    public Preguntas findById(@PathVariable("id") Long id) {
-		return preguntasService.findById(id);
-    }
-    
-    @PostMapping("preguntas")
-    public Preguntas save(@RequestBody Preguntas preguntas) {
-		return preguntasService.save(preguntas);
-    }
-    
-    @PutMapping("preguntas")
-    public Preguntas edit(@RequestBody Preguntas preguntas) {
-        Preguntas preguntasActual = new Preguntas();
-        Preguntas preguntasUpdate = new Preguntas();
-        preguntasActual = preguntasService.findById(preguntas.getId());
+  @GetMapping("preguntas/native")
+  public List<Object> findAllNative() {
+    return preguntasService.findAllNative();
+  }
 
-        if (preguntasActual != null) {
-            preguntasUpdate = preguntasService.save(preguntas);
-        }
-        return preguntasUpdate;
-	}
+  @GetMapping("preguntas/{id}")
+  public Preguntas findById(@PathVariable("id") Long id) {
+    return preguntasService.findById(id);
+  }
+
+  @PostMapping("preguntas")
+  public Preguntas save(@RequestBody Preguntas preguntas) {
+    return preguntasService.save(preguntas);
+  }
+
+  @PutMapping("preguntas")
+  public Preguntas edit(@RequestBody Preguntas preguntas) {
+    Preguntas preguntasActual = new Preguntas();
+    Preguntas preguntasUpdate = new Preguntas();
+    preguntasActual = preguntasService.findById(preguntas.getId());
+
+    if (preguntasActual != null) {
+      preguntasUpdate = preguntasService.save(preguntas);
+    }
+    return preguntasUpdate;
+  }
+
+  @PutMapping("preguntas/estado")
+  public Preguntas cambiarEstado(@RequestBody Preguntas preguntas) {
+    Preguntas PreguntasUpdate = null;
+    Preguntas PreguntasActual = preguntasService.findById(preguntas.getId());
+
+    if (PreguntasActual != null) {
+      if (preguntas.getEstado() == 0) {
+        preguntas.setEstado(1);
+      } else {
+        preguntas.setEstado(0);
+      }
+      PreguntasUpdate = preguntasService.save(preguntas);
+    }
+    return PreguntasUpdate;
+  }
 }

@@ -2,23 +2,22 @@ package com.apirest.efi.models.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
+
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -28,6 +27,7 @@ public class Empresa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
@@ -80,16 +80,18 @@ public class Empresa implements Serializable {
     @Size(min = 1, max = 1)
     @Column(name = "orden")
     private String orden;
-    @Size(max = 2)
     @Column(name = "estado")
-    private String estado;
+    private Integer estado;
     @Size(max = 200)
     @Column(name = "logo")
     private String logo;
-    @Basic(optional = false)
+    /* @Basic(optional = false)
     @NotNull
     @Column(name = "fk_entidad")
-    private long fkEntidad;
+    private long Entidades; */
+    @JoinColumn(name = "fk_entidad", referencedColumnName = "id_entidad")
+    @ManyToOne(optional = false)
+    private Entidades fkEntidad;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany( cascade = CascadeType.ALL, mappedBy = "idEmpresa")
     private List<Encuestas> encuestasList;
@@ -117,7 +119,6 @@ public class Empresa implements Serializable {
         this.contactoEmail = contactoEmail;
         this.licencia = licencia;
         this.orden = orden;
-        this.fkEntidad = fkEntidad;
     }
 
     public Long getId() {
@@ -208,14 +209,6 @@ public class Empresa implements Serializable {
         this.orden = orden;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getLogo() {
         return logo;
     }
@@ -224,13 +217,13 @@ public class Empresa implements Serializable {
         this.logo = logo;
     }
 
-    public long getFkEntidad() {
+/*     public long getFkEntidad() {
         return fkEntidad;
     }
 
     public void setFkEntidad(long fkEntidad) {
         this.fkEntidad = fkEntidad;
-    }
+    } */
 
 /*     @XmlTransient
     @JsonIgnore
@@ -287,5 +280,20 @@ public class Empresa implements Serializable {
     public String toString() {
         return "com.apirest.efi.models.entity.Empresa[ id=" + id + " ]";
     }
-    
+
+    public Entidades getFkEntidad() {
+        return fkEntidad;
+    }
+
+    public void setFkEntidad(Entidades fkEntidad) {
+        this.fkEntidad = fkEntidad;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
+    }
 }

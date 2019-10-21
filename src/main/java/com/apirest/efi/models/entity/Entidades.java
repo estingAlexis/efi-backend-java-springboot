@@ -31,7 +31,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Entidades.findByCodigoDane", query = "SELECT e FROM Entidades e WHERE e.codigoDane = :codigoDane")
     , @NamedQuery(name = "Entidades.findByTipo", query = "SELECT e FROM Entidades e WHERE e.tipo = :tipo")
     , @NamedQuery(name = "Entidades.findByEntidad", query = "SELECT e FROM Entidades e WHERE e.entidad = :entidad")
-    , @NamedQuery(name = "Entidades.findByEstado", query = "SELECT e FROM Entidades e WHERE e.estado = :estado")
     , @NamedQuery(name = "Entidades.findByNit", query = "SELECT e FROM Entidades e WHERE e.nit = :nit")
     , @NamedQuery(name = "Entidades.findByDepartamento", query = "SELECT e FROM Entidades e WHERE e.departamento = :departamento")
     , @NamedQuery(name = "Entidades.findByCiudad", query = "SELECT e FROM Entidades e WHERE e.ciudad = :ciudad")
@@ -69,9 +68,8 @@ public class Entidades implements Serializable {
     private String entidad;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
     @Column(name = "Estado")
-    private String estado;
+    private Integer estado;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -135,7 +133,7 @@ public class Entidades implements Serializable {
         this.idEntidad = idEntidad;
     }
 
-    public Entidades(Long idEntidad, int codigoChip, String entidad, String estado, String nit, String departamento, String ciudad, String direccion, String telefonos, String fax, String correo, String sector, String naturaleza, long fkCategoria) {
+    public Entidades(Long idEntidad, int codigoChip, String entidad, Integer estado, String nit, String departamento, String ciudad, String direccion, String telefonos, String fax, String correo, String sector, String naturaleza, long fkCategoria) {
         this.idEntidad = idEntidad;
         this.codigoChip = codigoChip;
         this.entidad = entidad;
@@ -190,14 +188,6 @@ public class Entidades implements Serializable {
 
     public void setEntidad(String entidad) {
         this.entidad = entidad;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public String getNit() {
@@ -319,6 +309,14 @@ public class Entidades implements Serializable {
     @Override
     public String toString() {
         return "com.apirest.efi.models.entity.Entidades[ idEntidad=" + idEntidad + " ]";
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
     
 }

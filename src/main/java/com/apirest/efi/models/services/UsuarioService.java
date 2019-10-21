@@ -41,6 +41,9 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
   }
 
   public Usuarios save(Usuarios user) {
+
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    user.setPassword(encoder.encode(user.getPassword()));
     return usuarioDao.save(user);
   }
 

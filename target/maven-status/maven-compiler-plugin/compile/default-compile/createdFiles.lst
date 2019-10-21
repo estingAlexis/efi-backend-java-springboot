@@ -38,6 +38,7 @@ com\apirest\efi\models\dao\EmpresaDao.class
 com\apirest\efi\models\entity\UsuariosRoles.class
 com\apirest\efi\models\entity\Encuestas.class
 com\apirest\efi\models\entity\IndicadorTipo.class
+com\apirest\efi\models\export\ExcelGenerator.class
 com\apirest\efi\auth\InfoAdicionalToken.class
 com\apirest\efi\controllers\EmpresaController.class
 com\apirest\efi\models\entity\Roles.class

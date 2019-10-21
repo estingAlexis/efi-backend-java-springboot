@@ -1,5 +1,4 @@
 package com.apirest.efi.auth;
-
 import java.util.Arrays;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -22,7 +21,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
   @Override
   public void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-        .antMatchers(HttpMethod.GET, "/api/v1/areas/list/**","/oauth/token"
+        .antMatchers(HttpMethod.GET,"efi/export/**"
         ).permitAll()
         .anyRequest().authenticated()
         .and().cors().configurationSource(corsConfigurationSource());

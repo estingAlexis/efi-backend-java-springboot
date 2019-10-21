@@ -16,6 +16,10 @@ public class IndicadorVariablesService {
         return indicadorVariablesDao.findAll();
     }
 
+    public List<IndicadorVariables> findByEstado(Integer estado) {
+        return indicadorVariablesDao.findByEstado(estado);
+    }
+
     public IndicadorVariables findById(Integer id){
         return indicadorVariablesDao.findById(id).orElse(null);
     }

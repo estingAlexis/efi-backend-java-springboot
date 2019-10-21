@@ -21,33 +21,49 @@ import com.apirest.efi.models.services.PlanCuentasService;
 @RequestMapping("/efi/")
 public class PlanCuentasController {
 
-    @Autowired
-    private PlanCuentasService planCuentasService;
+  @Autowired
+  private PlanCuentasService planCuentasService;
 
-    @GetMapping("planCuentas")
-    public List<PlanCuentas> findAll() {
-		return planCuentasService.findAll();
-    }
-    
-    @GetMapping("planCuentas/{id}")
-    public PlanCuentas findById(@PathVariable("id") Integer id) {
-		return planCuentasService.findById(id);
-    }
-    
-    @PostMapping("planCuentas")
-    public PlanCuentas save(@RequestBody PlanCuentas planCuentas) {
-		return planCuentasService.save(planCuentas);
-    }
-    
-    @PutMapping("planCuentas")
-    public PlanCuentas edit(@RequestBody PlanCuentas planCuentas) {
-        PlanCuentas planCuentasActual = new PlanCuentas();
-        PlanCuentas planCuentasUpdate = new PlanCuentas();
-        planCuentasActual = planCuentasService.findById(planCuentas.getIdCuenta());
+  @GetMapping("planCuentas")
+  public List<PlanCuentas> findAll() {
+    return planCuentasService.findAll();
+  }
 
-        if (planCuentasActual != null) {
-            planCuentasUpdate = planCuentasService.save(planCuentas);
-        }
-        return planCuentasUpdate;
-	}
+  @GetMapping("planCuentas/{id}")
+  public PlanCuentas findById(@PathVariable("id") Integer id) {
+    return planCuentasService.findById(id);
+  }
+
+  @PostMapping("planCuentas")
+  public PlanCuentas save(@RequestBody PlanCuentas planCuentas) {
+    return planCuentasService.save(planCuentas);
+  }
+
+  @PutMapping("planCuentas")
+  public PlanCuentas edit(@RequestBody PlanCuentas planCuentas) {
+    PlanCuentas planCuentasActual = new PlanCuentas();
+    PlanCuentas planCuentasUpdate = new PlanCuentas();
+    planCuentasActual = planCuentasService.findById(planCuentas.getIdCuenta());
+
+    if (planCuentasActual != null) {
+      planCuentasUpdate = planCuentasService.save(planCuentas);
+    }
+    return planCuentasUpdate;
+  }
+
+  @PutMapping("planCuentas/estado")
+  public PlanCuentas cambiarEstado(@RequestBody PlanCuentas planCuentas) {
+    PlanCuentas planCuentasUpdate = null;
+    PlanCuentas planCuentasActual = planCuentasService.findById(planCuentas.getIdCuenta());
+
+    if (planCuentasActual != null) {
+      if (planCuentas.getEstado() == 0) {
+        planCuentas.setEstado(1);
+      } else {
+        planCuentas.setEstado(0);
+      }
+      planCuentasUpdate = planCuentasService.save(planCuentas);
+    }
+    return planCuentasUpdate;
+  }
 }

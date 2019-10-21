@@ -21,33 +21,33 @@ import com.apirest.efi.models.services.GruposPreguntaService;
 @RequestMapping("/efi/")
 public class GruposPreguntaController {
 
-    @Autowired
-    private GruposPreguntaService gruposPreguntaService;
+  @Autowired
+  private GruposPreguntaService gruposPreguntaService;
 
-    @GetMapping("gruposPregunta")
-    public List<GruposPregunta> findAll() {
-		return gruposPreguntaService.findAll();
-    }
-    
-    @GetMapping("gruposPregunta/{id}")
-    public GruposPregunta findById(@PathVariable("id") Long id) {
-		return gruposPreguntaService.findById(id);
-    }
-    
-    @PostMapping("gruposPregunta")
-    public GruposPregunta save(@RequestBody GruposPregunta gruposPregunta) {
-		return gruposPreguntaService.save(gruposPregunta);
-    }
-    
-    @PutMapping("gruposPregunta")
-    public GruposPregunta edit(@RequestBody GruposPregunta gruposPregunta) {
-        GruposPregunta gruposPreguntaActual = new GruposPregunta();
-        GruposPregunta gruposPreguntaUpdate = new GruposPregunta();
-        gruposPreguntaActual = gruposPreguntaService.findById(gruposPregunta.getId());
+  @GetMapping("gruposPregunta")
+  public List<GruposPregunta> findAll() {
+    return gruposPreguntaService.findAll();
+  }
 
-        if (gruposPreguntaActual != null) {
-            gruposPreguntaUpdate = gruposPreguntaService.save(gruposPregunta);
-        }
-        return gruposPreguntaUpdate;
-	}
+  @GetMapping("gruposPregunta/{id}")
+  public GruposPregunta findById(@PathVariable("id") Long id) {
+    return gruposPreguntaService.findById(id);
+  }
+
+  @PostMapping("gruposPregunta")
+  public GruposPregunta save(@RequestBody GruposPregunta gruposPregunta) {
+    return gruposPreguntaService.save(gruposPregunta);
+  }
+
+  @PutMapping("gruposPregunta")
+  public GruposPregunta edit(@RequestBody GruposPregunta gruposPregunta) {
+    GruposPregunta gruposPreguntaActual = new GruposPregunta();
+    GruposPregunta gruposPreguntaUpdate = new GruposPregunta();
+    gruposPreguntaActual = gruposPreguntaService.findById(gruposPregunta.getId());
+
+    if (gruposPreguntaActual != null) {
+      gruposPreguntaUpdate = gruposPreguntaService.save(gruposPregunta);
+    }
+    return gruposPreguntaUpdate;
+  }
 }
